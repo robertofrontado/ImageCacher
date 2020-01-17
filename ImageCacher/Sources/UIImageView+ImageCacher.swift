@@ -42,4 +42,17 @@ extension UIImageView {
             completion?(image)
         }
     }
+    
+    private func addActivityIndicator() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView()
+        addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+        ])
+        
+        activityIndicator.startAnimating()
+        return activityIndicator
+    }
 }

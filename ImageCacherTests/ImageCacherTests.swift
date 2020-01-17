@@ -11,12 +11,12 @@ import XCTest
 
 class ImageCacherTests: XCTestCase {
 
-    var imageFetcher: ImageFetcher!
+    var networkFetcher: NetworkFetcher!
     var storage: Storage!
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        imageFetcher = ImageFetcher(urlSession: .shared)
+        networkFetcher = NetworkFetcher(urlSession: .shared)
         storage = Storage(fileManager: .default)
     }
 

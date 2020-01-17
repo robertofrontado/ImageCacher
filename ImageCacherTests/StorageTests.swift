@@ -12,25 +12,51 @@ import XCTest
 class StorageTests: XCTestCase {
     
     var storage: Storage!
+    let key = "image.png"
+    let image = UIImage(named: "grumpy-cat",
+                        in: Bundle(for: StorageTests.self),
+                        compatibleWith: nil)!
     
     override func setUp() {
-        storage = Storage()
+        storage = Storage(fileManager: .default)
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        storage.removeAll()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testShouldReturnIfFileExistCorrectly() {
+        XCTAssertFalse(storage.fileExist(key: key))
+        storage.save(key: key, image: image)
+        XCTAssertTrue(storage.fileExist(key: key))
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testShouldReturnErrorWhenLoadFails() {
+        let fileNotFoundExpectation = expectation(description: "File found with key: \(key)")
+        XCTAssertFalse(storage.fileExist(key: key))
+        storage.load(key: key) {
+            switch $0 {
+            case .success:
+                break
+            case .failure:
+                fileNotFoundExpectation.fulfill()
+            }
         }
+        waitForExpectations(timeout: 10, handler: nil)
     }
-
+    
+    func testShouldReturnImageWhenLoadSucceed() {
+        let fileFoundExpectation = expectation(description: "File not found with key: \(key)")
+        storage.save(key: key, image: image)
+        XCTAssertTrue(storage.fileExist(key: key))
+        storage.load(key: key) {
+            switch $0 {
+            case .success:
+                fileFoundExpectation.fulfill()
+            case .failure:
+                break
+            }
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }
