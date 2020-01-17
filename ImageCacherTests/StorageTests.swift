@@ -1,23 +1,20 @@
 //
-//  ImageCacherTests.swift
+//  StorageTests.swift
 //  ImageCacherTests
 //
-//  Created by Roberto Frontado on 15/01/2020.
+//  Created by Roberto Frontado on 17/01/2020.
 //  Copyright © 2020 Roberto Frontado. All rights reserved.
 //
 
 import XCTest
 @testable import ImageCacher
 
-class ImageCacherTests: XCTestCase {
-
-    var imageFetcher: ImageFetcher!
+class StorageTests: XCTestCase {
+    
     var storage: Storage!
     
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        imageFetcher = ImageFetcher(urlSession: .shared)
-        storage = Storage(fileManager: .default)
+        storage = Storage()
     }
 
     override func tearDown() {

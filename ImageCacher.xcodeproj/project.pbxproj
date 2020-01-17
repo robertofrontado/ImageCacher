@@ -12,10 +12,16 @@
 		A20FBBEE23CF8E96004FE3C5 /* ImageCacher.h in Headers */ = {isa = PBXBuildFile; fileRef = A20FBBE023CF8E96004FE3C5 /* ImageCacher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A20FBBFE23CF8ED9004FE3C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20FBBFD23CF8ED9004FE3C5 /* AppDelegate.swift */; };
 		A20FBC0223CF8ED9004FE3C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20FBC0123CF8ED9004FE3C5 /* ViewController.swift */; };
-		A20FBC0523CF8ED9004FE3C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20FBC0323CF8ED9004FE3C5 /* Main.storyboard */; };
 		A20FBC0723CF8ED9004FE3C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20FBC0623CF8ED9004FE3C5 /* Assets.xcassets */; };
 		A20FBC0A23CF8ED9004FE3C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20FBC0823CF8ED9004FE3C5 /* LaunchScreen.storyboard */; };
 		A20FBC1523CF8EDA004FE3C5 /* SampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20FBC1423CF8EDA004FE3C5 /* SampleAppTests.swift */; };
+		A20FBC2123CF90D0004FE3C5 /* NetworkFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20FBC2023CF90D0004FE3C5 /* NetworkFetcher.swift */; };
+		A20FBC2323CF90D7004FE3C5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20FBC2223CF90D7004FE3C5 /* Storage.swift */; };
+		A20FBC2523CF9355004FE3C5 /* ImageCacher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20FBBDD23CF8E96004FE3C5 /* ImageCacher.framework */; };
+		A20FBC2623CF9355004FE3C5 /* ImageCacher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A20FBBDD23CF8E96004FE3C5 /* ImageCacher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A20FBC4D23CFAC3A004FE3C5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20FBC4C23CFAC3A004FE3C5 /* GameKit.framework */; };
+		A2C6CFF223D1AFF2007AFD6B /* UIImageView+ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */; };
+		A2C6CFF423D1B9B9007AFD6B /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +39,28 @@
 			remoteGlobalIDString = A20FBBFA23CF8ED9004FE3C5;
 			remoteInfo = SampleApp;
 		};
+		A20FBC2723CF9355004FE3C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A20FBBD423CF8E96004FE3C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A20FBBDC23CF8E96004FE3C5;
+			remoteInfo = ImageCacher;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A20FBC2923CF9355004FE3C5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A20FBC2623CF9355004FE3C5 /* ImageCacher.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A20FBBDD23CF8E96004FE3C5 /* ImageCacher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageCacher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,13 +72,17 @@
 		A20FBBFB23CF8ED9004FE3C5 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20FBBFD23CF8ED9004FE3C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A20FBC0123CF8ED9004FE3C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A20FBC0423CF8ED9004FE3C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A20FBC0623CF8ED9004FE3C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A20FBC0923CF8ED9004FE3C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A20FBC0B23CF8ED9004FE3C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20FBC1023CF8EDA004FE3C5 /* SampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20FBC1423CF8EDA004FE3C5 /* SampleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppTests.swift; sourceTree = "<group>"; };
 		A20FBC1623CF8EDA004FE3C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A20FBC2023CF90D0004FE3C5 /* NetworkFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetcher.swift; sourceTree = "<group>"; };
+		A20FBC2223CF90D7004FE3C5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		A20FBC4C23CFAC3A004FE3C5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageCacher.swift"; sourceTree = "<group>"; };
+		A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A20FBC2523CF9355004FE3C5 /* ImageCacher.framework in Frameworks */,
+				A20FBC4D23CFAC3A004FE3C5 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +128,7 @@
 				A20FBBFC23CF8ED9004FE3C5 /* SampleApp */,
 				A20FBC1323CF8EDA004FE3C5 /* SampleAppTests */,
 				A20FBBDE23CF8E96004FE3C5 /* Products */,
+				A20FBC2423CF9355004FE3C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +146,7 @@
 		A20FBBDF23CF8E96004FE3C5 /* ImageCacher */ = {
 			isa = PBXGroup;
 			children = (
+				A20FBC1D23CF906D004FE3C5 /* Sources */,
 				A20FBBE023CF8E96004FE3C5 /* ImageCacher.h */,
 				A20FBBE123CF8E96004FE3C5 /* Info.plist */,
 			);
@@ -123,6 +158,7 @@
 			children = (
 				A20FBBEB23CF8E96004FE3C5 /* ImageCacherTests.swift */,
 				A20FBBED23CF8E96004FE3C5 /* Info.plist */,
+				A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */,
 			);
 			path = ImageCacherTests;
 			sourceTree = "<group>";
@@ -132,7 +168,6 @@
 			children = (
 				A20FBBFD23CF8ED9004FE3C5 /* AppDelegate.swift */,
 				A20FBC0123CF8ED9004FE3C5 /* ViewController.swift */,
-				A20FBC0323CF8ED9004FE3C5 /* Main.storyboard */,
 				A20FBC0623CF8ED9004FE3C5 /* Assets.xcassets */,
 				A20FBC0823CF8ED9004FE3C5 /* LaunchScreen.storyboard */,
 				A20FBC0B23CF8ED9004FE3C5 /* Info.plist */,
@@ -147,6 +182,24 @@
 				A20FBC1623CF8EDA004FE3C5 /* Info.plist */,
 			);
 			path = SampleAppTests;
+			sourceTree = "<group>";
+		};
+		A20FBC1D23CF906D004FE3C5 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A20FBC2023CF90D0004FE3C5 /* NetworkFetcher.swift */,
+				A20FBC2223CF90D7004FE3C5 /* Storage.swift */,
+				A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A20FBC2423CF9355004FE3C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A20FBC4C23CFAC3A004FE3C5 /* GameKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,10 +259,12 @@
 				A20FBBF723CF8ED9004FE3C5 /* Sources */,
 				A20FBBF823CF8ED9004FE3C5 /* Frameworks */,
 				A20FBBF923CF8ED9004FE3C5 /* Resources */,
+				A20FBC2923CF9355004FE3C5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A20FBC2823CF9355004FE3C5 /* PBXTargetDependency */,
 			);
 			name = SampleApp;
 			productName = SampleApp;
@@ -246,6 +301,7 @@
 				TargetAttributes = {
 					A20FBBDC23CF8E96004FE3C5 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
 					};
 					A20FBBE523CF8E96004FE3C5 = {
 						CreatedOnToolsVersion = 11.0;
@@ -301,7 +357,6 @@
 			files = (
 				A20FBC0A23CF8ED9004FE3C5 /* LaunchScreen.storyboard in Resources */,
 				A20FBC0723CF8ED9004FE3C5 /* Assets.xcassets in Resources */,
-				A20FBC0523CF8ED9004FE3C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +374,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2C6CFF223D1AFF2007AFD6B /* UIImageView+ImageCacher.swift in Sources */,
+				A20FBC2123CF90D0004FE3C5 /* NetworkFetcher.swift in Sources */,
+				A20FBC2323CF90D7004FE3C5 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20FBBEC23CF8E96004FE3C5 /* ImageCacherTests.swift in Sources */,
+				A2C6CFF423D1B9B9007AFD6B /* StorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,17 +419,14 @@
 			target = A20FBBFA23CF8ED9004FE3C5 /* SampleApp */;
 			targetProxy = A20FBC1123CF8EDA004FE3C5 /* PBXContainerItemProxy */;
 		};
+		A20FBC2823CF9355004FE3C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A20FBBDC23CF8E96004FE3C5 /* ImageCacher */;
+			targetProxy = A20FBC2723CF9355004FE3C5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A20FBC0323CF8ED9004FE3C5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A20FBC0423CF8ED9004FE3C5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A20FBC0823CF8ED9004FE3C5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -434,11 +490,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -492,10 +547,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -506,6 +560,7 @@
 		A20FBBF223CF8E96004FE3C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -521,7 +576,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.frontado.ImageCacher;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -529,6 +586,7 @@
 		A20FBBF323CF8E96004FE3C5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -544,6 +602,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.frontado.ImageCacher;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -552,6 +611,7 @@
 		A20FBBF523CF8E96004FE3C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ImageCacherTests/Info.plist;
@@ -569,6 +629,7 @@
 		A20FBBF623CF8E96004FE3C5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ImageCacherTests/Info.plist;
