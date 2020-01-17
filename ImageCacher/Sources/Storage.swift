@@ -18,7 +18,7 @@ class Storage {
     static let shared = Storage(fileManager: .default)
     
     let STORAGE_PATH = "com.frontado.ImageCacher"
-    let fileManager: FileManager
+    private let fileManager: FileManager
     let directoryURL: URL
     
     init(fileManager: FileManager) {
@@ -34,7 +34,7 @@ class Storage {
         do {
             try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
         } catch {
-            print("Failed to create directory at: \(directoryURL.absoluteString)")
+            print("Failed to create directory at: \(directoryURL.path)")
         }
     }
     
@@ -62,6 +62,39 @@ class Storage {
         }
         
         completion(.success(image))
+    }
+    
+    func removeAll() {
+        do {
+            let filePaths = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            filePaths.forEach { filePath in
+                do {
+                    try fileManager.removeItem(at: filePath)
+                } catch let error {
+                    print("Could not remove file at path \(filePath) with error: \(error)")
+                }
+            }
+        } catch let error {
+            print("Could not find files in \(directoryURL.path) with error: \(error)")
+        }
+    }
+    
+    func remove(key: String) {
+        guard let filePath = path(forKey: key) else {
+            print("Could not find file with key: \(key)")
+            return
+        }
+        
+        do {
+            try fileManager.removeItem(at: filePath)
+        } catch let error {
+            print("Could not remove file at path \(filePath) with error: \(error)")
+        }
+    }
+    
+    func fileExist(key: String) -> Bool {
+        let filePath = directoryURL.appendingPathComponent(key)
+        return fileManager.fileExists(atPath: filePath.path)
     }
     
     private func path(forKey key: String) -> URL? {
