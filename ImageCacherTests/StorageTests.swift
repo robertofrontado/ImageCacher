@@ -59,4 +59,30 @@ class StorageTests: XCTestCase {
         }
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testShouldRemoveFileGivenTheKey() {
+        storage.save(key: key, image: image)
+        XCTAssertTrue(storage.fileExist(key: key))
+        
+        storage.remove(key: key)
+        XCTAssertFalse(storage.fileExist(key: key))
+    }
+    
+    func testShouldRemoveAllFiles() {
+        let key1 = "image1.png"
+        let key2 = "image2.png"
+        let key3 = "image3.png"
+        
+        storage.save(key: key1, image: image)
+        storage.save(key: key2, image: image)
+        storage.save(key: key3, image: image)
+        XCTAssertTrue(storage.fileExist(key: key1))
+        XCTAssertTrue(storage.fileExist(key: key2))
+        XCTAssertTrue(storage.fileExist(key: key3))
+        
+        storage.removeAll()
+        XCTAssertFalse(storage.fileExist(key: key1))
+        XCTAssertFalse(storage.fileExist(key: key2))
+        XCTAssertFalse(storage.fileExist(key: key3))
+    }
 }
