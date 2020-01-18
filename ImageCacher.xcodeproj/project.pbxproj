@@ -201,6 +201,7 @@
 		A20FBBFC23CF8ED9004FE3C5 /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				A2A79FCE23D37C75001FAE92 /* Commons */,
 				A23C477523D33D2200F32697 /* Data */,
 				A23C477623D33D2800F32697 /* Presentation */,
 				A20FBBFD23CF8ED9004FE3C5 /* AppDelegate.swift */,
@@ -331,6 +332,14 @@
 				A2A79FCA23D36CEC001FAE92 /* Photo+ImageUrl.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A2A79FCE23D37C75001FAE92 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				A2A79FD123D3811A001FAE92 /* Debouncer.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,6 +546,7 @@
 				A23C478D23D353E600F32697 /* ParametersEncodingType.swift in Sources */,
 				A23C47A323D3638A00F32697 /* PhotosViewModel.swift in Sources */,
 				A20FBBFE23CF8ED9004FE3C5 /* AppDelegate.swift in Sources */,
+				A2A79FD223D3811A001FAE92 /* Debouncer.swift in Sources */,
 				A23C479D23D358B600F32697 /* FlickrAPI.swift in Sources */,
 				A23C479923D357B900F32697 /* BaseRepository.swift in Sources */,
 				A23C478F23D3544000F32697 /* APIRequestMethod.swift in Sources */,
