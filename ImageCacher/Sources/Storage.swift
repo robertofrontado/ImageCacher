@@ -21,6 +21,10 @@ class Storage {
     private let fileManager: FileManager
     let directoryURL: URL
     
+    lazy var dispatchQueue : DispatchQueue = {
+        return DispatchQueue(label: "com.frontado.ImageCacher.serial.queue", attributes: [])
+    }()
+    
     init(fileManager: FileManager) {
         self.fileManager = fileManager
         
@@ -44,51 +48,61 @@ class Storage {
             let path = path(forKey: key)
             else { return }
         
-        do {
-            try pngRepresentation.write(to: path, options: .atomicWrite)
-        } catch let error {
-            print("Saving file resulted in error: \(error)")
+        dispatchQueue.async {
+            do {
+                try pngRepresentation.write(to: path, options: .atomicWrite)
+            } catch let error {
+                print("Saving file resulted in error: \(error)")
+            }
         }
     }
     
-    func load(key: String, completion: (Result<UIImage, StorageError>) -> Void) {
-        guard
-            let filePath = path(forKey: key),
-            let fileData = fileManager.contents(atPath: filePath.path),
-            let image = UIImage(data: fileData)
-            else {
-                print("File not found with key: \(key)")
-                return completion(.failure(.fileNotFound))
+    func load(key: String, completion: @escaping (Result<UIImage, StorageError>) -> Void) {
+        dispatchQueue.async {
+            guard
+                let filePath = self.path(forKey: key),
+                let fileData = self.fileManager.contents(atPath: filePath.path),
+                let image = UIImage(data: fileData)
+                else {
+                    print("File not found with key: \(key)")
+                    return completion(.failure(.fileNotFound))
+            }
+            
+            completion(.success(image))
         }
-        
-        completion(.success(image))
     }
     
     func removeAll() {
-        do {
-            let filePaths = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            filePaths.forEach { filePath in
-                do {
-                    try fileManager.removeItem(at: filePath)
-                } catch let error {
-                    print("Could not remove file at path \(filePath) with error: \(error)")
+        dispatchQueue.async {
+            do {
+                let filePaths = try self.fileManager.contentsOfDirectory(at: self.directoryURL,
+                                                                         includingPropertiesForKeys: nil,
+                                                                         options: .skipsHiddenFiles)
+                filePaths.forEach { filePath in
+                    do {
+                        try self.fileManager.removeItem(at: filePath)
+                    } catch let error {
+                        print("Could not remove file at path \(filePath) with error: \(error)")
+                    }
                 }
+            } catch let error {
+                print("Could not find files in \(self.directoryURL.path) with error: \(error)")
             }
-        } catch let error {
-            print("Could not find files in \(directoryURL.path) with error: \(error)")
         }
     }
     
     func remove(key: String) {
-        guard let filePath = path(forKey: key) else {
-            print("Could not find file with key: \(key)")
-            return
-        }
-        
-        do {
-            try fileManager.removeItem(at: filePath)
-        } catch let error {
-            print("Could not remove file at path \(filePath) with error: \(error)")
+        dispatchQueue.async {
+            guard let filePath = self.path(forKey: key) else {
+                print("Could not find file with key: \(key)")
+                return
+            }
+            
+            do {
+                try self.fileManager.removeItem(at: filePath)
+            } catch let error {
+                print("Could not remove file at path \(filePath) with error: \(error)")
+            }
         }
     }
     

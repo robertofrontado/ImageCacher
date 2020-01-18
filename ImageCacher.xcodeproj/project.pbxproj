@@ -21,6 +21,7 @@
 		A20FBC2623CF9355004FE3C5 /* ImageCacher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A20FBBDD23CF8E96004FE3C5 /* ImageCacher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A20FBC4D23CFAC3A004FE3C5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20FBC4C23CFAC3A004FE3C5 /* GameKit.framework */; };
 		A23C477223D2629800F32697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A23C477123D2629800F32697 /* Assets.xcassets */; };
+		A23C477423D3355D00F32697 /* NetworkFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23C477323D3355D00F32697 /* NetworkFetcherTests.swift */; };
 		A2C6CFF223D1AFF2007AFD6B /* UIImageView+ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */; };
 		A2C6CFF423D1B9B9007AFD6B /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		A20FBC2223CF90D7004FE3C5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A20FBC4C23CFAC3A004FE3C5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		A23C477123D2629800F32697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A23C477323D3355D00F32697 /* NetworkFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetcherTests.swift; sourceTree = "<group>"; };
 		A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageCacher.swift"; sourceTree = "<group>"; };
 		A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				A20FBBEB23CF8E96004FE3C5 /* ImageCacherTests.swift */,
+				A23C477323D3355D00F32697 /* NetworkFetcherTests.swift */,
 				A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */,
 				A20FBBED23CF8E96004FE3C5 /* Info.plist */,
 				A23C477123D2629800F32697 /* Assets.xcassets */,
@@ -388,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23C477423D3355D00F32697 /* NetworkFetcherTests.swift in Sources */,
 				A20FBBEC23CF8E96004FE3C5 /* ImageCacherTests.swift in Sources */,
 				A2C6CFF423D1B9B9007AFD6B /* StorageTests.swift in Sources */,
 			);

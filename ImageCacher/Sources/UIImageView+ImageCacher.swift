@@ -16,7 +16,7 @@ extension UIImageView {
         storage.load(key: url.absoluteString) { result in
             switch result {
             case .success(let image):
-                imgc_setImage(image: image, completion: completion)
+                self.imgc_setImage(image: image, completion: completion)
             case .failure:
                 let fetcher = NetworkFetcher(urlSession: .shared)
                 fetcher.fetch(from: url) { result in
