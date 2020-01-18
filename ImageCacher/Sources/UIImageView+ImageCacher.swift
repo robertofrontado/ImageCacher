@@ -39,7 +39,9 @@ extension UIImageView {
     func imgc_setImage(image: UIImage, completion: ((UIImage?) -> Void)? = nil) {
         DispatchQueue.main.async {
             self.removeActivityIndicatior()
+            self.alpha = 0
             self.image = image
+            UIView.animate(withDuration: 0.3) { self.alpha = 1 }
             completion?(image)
         }
     }
