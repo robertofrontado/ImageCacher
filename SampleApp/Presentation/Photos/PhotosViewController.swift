@@ -78,7 +78,14 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UISear
     
     private func setUpViews() {
         title = "Photos"
+        navigationController?.navigationBar.barTintColor = .lightGray
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = false
+        
         view.addSubview(searchBar)
+        searchBar.barTintColor = .lightGray
+        searchBar.backgroundColor = .lightGray
+        searchBar.backgroundImage = UIImage()
         searchBar.pinToSuperViewEdges(excluding: .bottom)
         searchBar.placeholder = "Search..."
         searchBar.delegate = self
