@@ -37,6 +37,9 @@
 		A2A79FC723D36609001FAE92 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FC623D36609001FAE92 /* ImageCollectionViewCell.swift */; };
 		A2A79FC923D369CA001FAE92 /* PhotosInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FC823D369CA001FAE92 /* PhotosInitializer.swift */; };
 		A2A79FCB23D36CEC001FAE92 /* Photo+ImageUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FCA23D36CEC001FAE92 /* Photo+ImageUrl.swift */; };
+		A2A79FD223D3811A001FAE92 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FD123D3811A001FAE92 /* Debouncer.swift */; };
+		A2A79FD623D39F56001FAE92 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FD523D39F56001FAE92 /* ImageCacher.swift */; };
+		A2A79FD823D3A386001FAE92 /* UIView+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FD723D3A386001FAE92 /* UIView+DropShadow.swift */; };
 		A2C6CFF223D1AFF2007AFD6B /* UIImageView+ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */; };
 		A2C6CFF423D1B9B9007AFD6B /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */; };
 /* End PBXBuildFile section */
@@ -115,6 +118,9 @@
 		A2A79FC623D36609001FAE92 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2A79FC823D369CA001FAE92 /* PhotosInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosInitializer.swift; sourceTree = "<group>"; };
 		A2A79FCA23D36CEC001FAE92 /* Photo+ImageUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+ImageUrl.swift"; sourceTree = "<group>"; };
+		A2A79FD123D3811A001FAE92 /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debouncer.swift; path = ../../Commons/Debouncer.swift; sourceTree = "<group>"; };
+		A2A79FD523D39F56001FAE92 /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
+		A2A79FD723D3A386001FAE92 /* UIView+DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DropShadow.swift"; sourceTree = "<group>"; };
 		A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageCacher.swift"; sourceTree = "<group>"; };
 		A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,7 +207,6 @@
 		A20FBBFC23CF8ED9004FE3C5 /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				A2A79FCE23D37C75001FAE92 /* Commons */,
 				A23C477523D33D2200F32697 /* Data */,
 				A23C477623D33D2800F32697 /* Presentation */,
 				A20FBBFD23CF8ED9004FE3C5 /* AppDelegate.swift */,
@@ -228,6 +233,7 @@
 				A20FBC2023CF90D0004FE3C5 /* NetworkFetcher.swift */,
 				A20FBC2223CF90D7004FE3C5 /* Storage.swift */,
 				A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */,
+				A2A79FD523D39F56001FAE92 /* ImageCacher.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 			children = (
 				A2A79FC223D36553001FAE92 /* Extensions */,
 				A23C47A623D363A100F32697 /* View */,
+				A2A79FD123D3811A001FAE92 /* Debouncer.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -330,16 +337,9 @@
 			children = (
 				A2A79FC323D36569001FAE92 /* UIView+Anchors.swift */,
 				A2A79FCA23D36CEC001FAE92 /* Photo+ImageUrl.swift */,
+				A2A79FD723D3A386001FAE92 /* UIView+DropShadow.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		A2A79FCE23D37C75001FAE92 /* Commons */ = {
-			isa = PBXGroup;
-			children = (
-				A2A79FD123D3811A001FAE92 /* Debouncer.swift */,
-			);
-			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2C6CFF223D1AFF2007AFD6B /* UIImageView+ImageCacher.swift in Sources */,
+				A2A79FD623D39F56001FAE92 /* ImageCacher.swift in Sources */,
 				A20FBC2123CF90D0004FE3C5 /* NetworkFetcher.swift in Sources */,
 				A20FBC2323CF90D7004FE3C5 /* Storage.swift in Sources */,
 			);
@@ -550,6 +551,7 @@
 				A23C479D23D358B600F32697 /* FlickrAPI.swift in Sources */,
 				A23C479923D357B900F32697 /* BaseRepository.swift in Sources */,
 				A23C478F23D3544000F32697 /* APIRequestMethod.swift in Sources */,
+				A2A79FD823D3A386001FAE92 /* UIView+DropShadow.swift in Sources */,
 				A23C477C23D3480400F32697 /* PhotosViewController.swift in Sources */,
 				A23C479523D356F800F32697 /* APITargetType.swift in Sources */,
 			);
