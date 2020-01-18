@@ -7,7 +7,7 @@
 //
 import Foundation
 
-class NetworkFetcher {
+class NetworkFetcher: Fetcher {
 
     let urlSession: URLSession
     var task: URLSessionTask?

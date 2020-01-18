@@ -14,7 +14,7 @@
 		A20FBC0A23CF8ED9004FE3C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20FBC0823CF8ED9004FE3C5 /* LaunchScreen.storyboard */; };
 		A20FBC1523CF8EDA004FE3C5 /* SampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20FBC1423CF8EDA004FE3C5 /* SampleAppTests.swift */; };
 		A20FBC2123CF90D0004FE3C5 /* NetworkFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20FBC2023CF90D0004FE3C5 /* NetworkFetcher.swift */; };
-		A20FBC2323CF90D7004FE3C5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20FBC2223CF90D7004FE3C5 /* Storage.swift */; };
+		A20FBC2323CF90D7004FE3C5 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20FBC2223CF90D7004FE3C5 /* DiskStorage.swift */; };
 		A20FBC2523CF9355004FE3C5 /* ImageCacher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20FBBDD23CF8E96004FE3C5 /* ImageCacher.framework */; };
 		A20FBC2623CF9355004FE3C5 /* ImageCacher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A20FBBDD23CF8E96004FE3C5 /* ImageCacher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A20FBC4D23CFAC3A004FE3C5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20FBC4C23CFAC3A004FE3C5 /* GameKit.framework */; };
@@ -40,6 +40,11 @@
 		A2A79FD223D3811A001FAE92 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FD123D3811A001FAE92 /* Debouncer.swift */; };
 		A2A79FD623D39F56001FAE92 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FD523D39F56001FAE92 /* ImageCacher.swift */; };
 		A2A79FD823D3A386001FAE92 /* UIView+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FD723D3A386001FAE92 /* UIView+DropShadow.swift */; };
+		A2A79FDA23D3AE83001FAE92 /* ImageCacherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FD923D3AE83001FAE92 /* ImageCacherTests.swift */; };
+		A2A79FDD23D3AE91001FAE92 /* MockFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FDC23D3AE91001FAE92 /* MockFetcher.swift */; };
+		A2A79FDF23D3AE9D001FAE92 /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FDE23D3AE9D001FAE92 /* MockStorage.swift */; };
+		A2A79FE123D3B01B001FAE92 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FE023D3B01B001FAE92 /* Storage.swift */; };
+		A2A79FE323D3B020001FAE92 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FE223D3B020001FAE92 /* Fetcher.swift */; };
 		A2C6CFF223D1AFF2007AFD6B /* UIImageView+ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */; };
 		A2C6CFF423D1B9B9007AFD6B /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */; };
 /* End PBXBuildFile section */
@@ -97,7 +102,7 @@
 		A20FBC1423CF8EDA004FE3C5 /* SampleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppTests.swift; sourceTree = "<group>"; };
 		A20FBC1623CF8EDA004FE3C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20FBC2023CF90D0004FE3C5 /* NetworkFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetcher.swift; sourceTree = "<group>"; };
-		A20FBC2223CF90D7004FE3C5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		A20FBC2223CF90D7004FE3C5 /* DiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
 		A20FBC4C23CFAC3A004FE3C5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		A23C477123D2629800F32697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A23C477323D3355D00F32697 /* NetworkFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetcherTests.swift; sourceTree = "<group>"; };
@@ -121,6 +126,11 @@
 		A2A79FD123D3811A001FAE92 /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debouncer.swift; path = ../../Commons/Debouncer.swift; sourceTree = "<group>"; };
 		A2A79FD523D39F56001FAE92 /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
 		A2A79FD723D3A386001FAE92 /* UIView+DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DropShadow.swift"; sourceTree = "<group>"; };
+		A2A79FD923D3AE83001FAE92 /* ImageCacherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacherTests.swift; sourceTree = "<group>"; };
+		A2A79FDC23D3AE91001FAE92 /* MockFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetcher.swift; sourceTree = "<group>"; };
+		A2A79FDE23D3AE9D001FAE92 /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
+		A2A79FE023D3B01B001FAE92 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		A2A79FE223D3B020001FAE92 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageCacher.swift"; sourceTree = "<group>"; };
 		A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,8 +206,10 @@
 		A20FBBEA23CF8E96004FE3C5 /* ImageCacherTests */ = {
 			isa = PBXGroup;
 			children = (
+				A2A79FDB23D3AE86001FAE92 /* Mocks */,
 				A23C477323D3355D00F32697 /* NetworkFetcherTests.swift */,
 				A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */,
+				A2A79FD923D3AE83001FAE92 /* ImageCacherTests.swift */,
 				A20FBBED23CF8E96004FE3C5 /* Info.plist */,
 				A23C477123D2629800F32697 /* Assets.xcassets */,
 			);
@@ -230,8 +242,10 @@
 		A20FBC1D23CF906D004FE3C5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A2A79FE023D3B01B001FAE92 /* Storage.swift */,
+				A20FBC2223CF90D7004FE3C5 /* DiskStorage.swift */,
+				A2A79FE223D3B020001FAE92 /* Fetcher.swift */,
 				A20FBC2023CF90D0004FE3C5 /* NetworkFetcher.swift */,
-				A20FBC2223CF90D7004FE3C5 /* Storage.swift */,
 				A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */,
 				A2A79FD523D39F56001FAE92 /* ImageCacher.swift */,
 			);
@@ -340,6 +354,15 @@
 				A2A79FD723D3A386001FAE92 /* UIView+DropShadow.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A2A79FDB23D3AE86001FAE92 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A2A79FDC23D3AE91001FAE92 /* MockFetcher.swift */,
+				A2A79FDE23D3AE9D001FAE92 /* MockStorage.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,7 +541,9 @@
 				A2C6CFF223D1AFF2007AFD6B /* UIImageView+ImageCacher.swift in Sources */,
 				A2A79FD623D39F56001FAE92 /* ImageCacher.swift in Sources */,
 				A20FBC2123CF90D0004FE3C5 /* NetworkFetcher.swift in Sources */,
-				A20FBC2323CF90D7004FE3C5 /* Storage.swift in Sources */,
+				A2A79FE123D3B01B001FAE92 /* Storage.swift in Sources */,
+				A20FBC2323CF90D7004FE3C5 /* DiskStorage.swift in Sources */,
+				A2A79FE323D3B020001FAE92 /* Fetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +552,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A23C477423D3355D00F32697 /* NetworkFetcherTests.swift in Sources */,
+				A2A79FDD23D3AE91001FAE92 /* MockFetcher.swift in Sources */,
+				A2A79FDA23D3AE83001FAE92 /* ImageCacherTests.swift in Sources */,
+				A2A79FDF23D3AE9D001FAE92 /* MockStorage.swift in Sources */,
 				A2C6CFF423D1B9B9007AFD6B /* StorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

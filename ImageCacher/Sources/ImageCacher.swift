@@ -11,25 +11,25 @@ import UIKit
 class ImageCacher {
 
     let url: URL
-    let networkFetcher: NetworkFetcher
+    let fetcher: Fetcher
     let storage: Storage
-    var isCancelled = false
+    private(set) var isCancelled = false
     
     convenience init(url: URL) {
         self.init(url: url,
-                  networkFetcher: NetworkFetcher(urlSession: .shared),
-                  storage: Storage(fileManager: .default))
+                  fetcher: NetworkFetcher(urlSession: .shared),
+                  storage: DiskStorage(fileManager: .default))
     }
     
-    init(url: URL, networkFetcher: NetworkFetcher, storage: Storage) {
+    init(url: URL, fetcher: Fetcher, storage: Storage) {
         self.url = url
-        self.networkFetcher = networkFetcher
+        self.fetcher = fetcher
         self.storage = storage
     }
     
     func cancel() {
         isCancelled = true
-        networkFetcher.cancel()
+        fetcher.cancel()
     }
     
     func loadImage(completion: @escaping ((UIImage?) -> Void)) {
@@ -46,7 +46,7 @@ class ImageCacher {
     }
     
     internal func fetchImage(completion: @escaping (UIImage?) -> Void) {
-        networkFetcher.fetch(from: url) { [weak self] result in
+        fetcher.fetch(from: url) { [weak self] result in
             guard let `self` = self, !self.isCancelled  else { return }
             
             switch result {

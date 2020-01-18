@@ -17,7 +17,7 @@ class NetworkFetcherTests: XCTestCase {
         networkFetcher = NetworkFetcher(urlSession: .shared)
     }
     
-    func testShouldSucceedWhenFetchingData() {
+    func testShouldReturnSuccessWhenFetchingDataSucceed() {
         let url = URL(string: "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png")!
         let fetchExcpectation = expectation(description: "Could not fetch file from url: \(url)")
         
@@ -33,7 +33,7 @@ class NetworkFetcherTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func testShouldFailWhenFetchingData() {
+    func testShouldReturnFailureWhenFetchingDataFails() {
         let url = URL(string: "https://")! // Nothing to fetch
         let fetchErrorExpectation = expectation(description: "Was able to fetch file from url: \(url)")
         

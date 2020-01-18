@@ -1,5 +1,5 @@
 //
-//  StorageTests.swift
+//  DiskStorageTests.swift
 //  ImageCacherTests
 //
 //  Created by Roberto Frontado on 17/01/2020.
@@ -9,16 +9,16 @@
 import XCTest
 @testable import ImageCacher
 
-class StorageTests: XCTestCase {
+class DiskStorageTests: XCTestCase {
     
-    var storage: Storage!
+    var storage: DiskStorage!
     let key = "image.png"
     let image = UIImage(named: "grumpy-cat",
-                        in: Bundle(for: StorageTests.self),
+                        in: Bundle(for: DiskStorageTests.self),
                         compatibleWith: nil)!
     
     override func setUp() {
-        storage = Storage(fileManager: .default)
+        storage = DiskStorage(fileManager: .default)
     }
 
     override func tearDown() {
