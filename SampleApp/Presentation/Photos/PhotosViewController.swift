@@ -8,11 +8,16 @@
 
 import UIKit
 
-class PhotosViewController: UIViewController, UICollectionViewDataSource {
+class PhotosViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate {
     
+    static let CELL_SPACING: CGFloat = 5
+    static let LOAD_MORE_THRESHOLD: Int = 6
+    
+    let searchBar = UISearchBar()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    let collectionViewDelegate = GridCollectionViewDelegate(numberOfRows: 3, spacing: 5)
+    let collectionViewDelegate = GridCollectionViewDelegate(numberOfRows: 3, spacing: PhotosViewController.CELL_SPACING)
     let viewModel: PhotosViewModel
+    let debouncer = Debouncer(interval: 0.5)
     
     init(viewModel: PhotosViewModel) {
         self.viewModel = viewModel
@@ -27,6 +32,15 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource {
         super.viewDidLoad()
         setUpViews()
         setUpBindings()
+        
+        collectionViewDelegate.setOnWillDisplayCellAtIndexPath { [weak self] indexPath in
+            guard let `self` = self else { return }
+            
+            if self.viewModel.photos.count - PhotosViewController.LOAD_MORE_THRESHOLD == indexPath.row {
+                self.viewModel.fetchPhotos(search: self.searchBar.text ?? "")
+            }
+        }
+        
         viewModel.fetchPhotos()
     }
     
@@ -46,23 +60,46 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionFooter else { return UICollectionReusableView() }
+        
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(LoadingCollectionViewFooterView.self)", for: indexPath)
+    }
+    
+    // MARK: - SearchBar
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        debouncer.debounce {
+            self.viewModel.fetchPhotos(search: searchBar.text ?? "")
+        }
+    }
+    
     // MARK: - Private
     
     private func setUpViews() {
-        view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-        ])
+        title = "Photos"
+        view.addSubview(searchBar)
+        searchBar.pinToSuperViewEdges(excluding: .bottom)
+        searchBar.placeholder = "Search..."
+        searchBar.delegate = self
         
-        collectionView.dataSource = self
-        collectionView.delegate = collectionViewDelegate
+        view.addSubview(collectionView)
+        collectionView.pinToSuperViewEdges(excluding: .top)
+        collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
         
         collectionView.register(ImageCollectionViewCell.self,
                                 forCellWithReuseIdentifier: "\(ImageCollectionViewCell.self)")
+        collectionView.register(LoadingCollectionViewFooterView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                withReuseIdentifier: "\(LoadingCollectionViewFooterView.self)")
+        collectionView.contentInset = UIEdgeInsets(top: PhotosViewController.CELL_SPACING * 2,
+                                                   left: 0,
+                                                   bottom: PhotosViewController.CELL_SPACING * 2,
+                                                   right: 0)
+        
+        collectionView.backgroundColor = .white
+        collectionView.dataSource = self
+        collectionView.delegate = collectionViewDelegate
     }
     
     private func setUpBindings() {
@@ -78,7 +115,9 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource {
         
         viewModel.onError = { [weak self] error in
             guard let `self` = self else { return }
-            // TODO: - Add implementation
+            let alertVC = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertVC, animated: true, completion: nil)
         }
     }
 }

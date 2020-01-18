@@ -13,7 +13,6 @@ class PhotosViewModel {
     private let flickrRepository: FlickrRepository
     private var paginatedItems: PaginatedItems<Photo>?
     private var currentSearch = ""
-    private var currentPage = 1
     var photos = [Photo]()
     var onPhotosChanged: (() -> Void)?
     var isLoading: ((Bool) -> Void)?
@@ -22,7 +21,7 @@ class PhotosViewModel {
     init(flickrRepository: FlickrRepository) {
         self.flickrRepository = flickrRepository
     }
-    
+        
     func fetchPhotos(search: String = "") {
         if search != currentSearch { // New search, clean up old values
             resetValues()
@@ -30,7 +29,8 @@ class PhotosViewModel {
 
         currentSearch = search
         runOnMainThread { self.isLoading?(true) }
-        flickrRepository.getPhotos(search: search, page: 1) { [weak self] result in
+        let nextPage = (paginatedItems?.page ?? 0) + 1
+        flickrRepository.getPhotos(search: search, page: nextPage) { [weak self] result in
             guard let `self` = self else { return }
             
             switch result {
@@ -48,7 +48,7 @@ class PhotosViewModel {
     
     func resetValues() {
         currentSearch = ""
-        currentPage = 1
+        paginatedItems = nil
         photos.removeAll()
         onPhotosChanged?()
     }

@@ -15,9 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        let photosVC = PhotosInitializer.create()
+        let photosNVC = UINavigationController(rootViewController: photosVC)
         
         let window = UIWindow()
-        window.rootViewController = PhotosInitializer.create()
+        window.rootViewController = photosNVC
         window.makeKeyAndVisible()
         
         self.window = window

@@ -10,19 +10,24 @@ import UIKit
 
 class GridCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    typealias OnCellSelected = (IndexPath) -> Void
+    typealias OnCellIndexPath = (IndexPath) -> Void
     
     let numberOfRows: CGFloat
     let spacing: CGFloat
-    private var onCellSelected: OnCellSelected?
+    private var onCellSelected: OnCellIndexPath?
+    private var onWillDisplayCellAtIndexPath: OnCellIndexPath?
     
     init(numberOfRows: CGFloat = 2, spacing: CGFloat = 5) {
         self.numberOfRows = numberOfRows
         self.spacing = spacing
     }
     
-    func setOnCellSelected(_ onCellSelected: @escaping OnCellSelected) {
+    func setOnCellSelected(_ onCellSelected: @escaping OnCellIndexPath) {
         self.onCellSelected = onCellSelected
+    }
+    
+    func setOnWillDisplayCellAtIndexPath(_ onWillDisplayCellAtIndexPath: @escaping OnCellIndexPath) {
+        self.onWillDisplayCellAtIndexPath = onWillDisplayCellAtIndexPath
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -45,5 +50,9 @@ class GridCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: spacing * 2, bottom: 0, right: spacing * 2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        onWillDisplayCellAtIndexPath?(indexPath)
     }
 }
