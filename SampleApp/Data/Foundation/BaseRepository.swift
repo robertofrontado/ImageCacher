@@ -19,8 +19,15 @@ class BaseRepository<T: APITargetType> {
         self.urlSession = urlSession
     }
     
+    internal func request(target: T, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        let urlRequest = createRequest(target: target)
+        currentTask = urlSession.dataTask(with: urlRequest, completionHandler: completion)
+        currentTask?.resume()
+    }
+    
+    
     // Needs more work in order to support other ParametersEncodingType
-    internal func createRequest(target: FlickrAPI) -> URLRequest {
+    internal func createRequest(target: T) -> URLRequest {
         var url = target.baseURL.appendingPathComponent(target.path)
         
         // Add query parameters
