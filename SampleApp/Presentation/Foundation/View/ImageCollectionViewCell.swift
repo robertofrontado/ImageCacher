@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageCacher
 
 class ImageCollectionViewCell: UICollectionViewCell {
 
@@ -22,14 +23,22 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUpViews() {
+        contentView.clipsToBounds = false
+        
         contentView.addSubview(imageView)
         imageView.pinToSuperViewEdges()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 4
     }
     
     override func prepareForReuse() {
         imageView.image = nil
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.dropShadow()
     }
     
     func configure(imageUrl: URL) {
