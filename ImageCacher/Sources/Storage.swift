@@ -106,11 +106,6 @@ class Storage {
         }
     }
     
-    func fileExist(key: String) -> Bool {
-        let filePath = directoryURL.appendingPathComponent(key)
-        return fileManager.fileExists(atPath: filePath.path)
-    }
-    
     private func path(forKey key: String) -> URL? {
         let filename = key.convertToValidFileName()
         return directoryURL.appendingPathComponent(filename)

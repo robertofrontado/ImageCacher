@@ -24,16 +24,9 @@ class StorageTests: XCTestCase {
     override func tearDown() {
         storage.removeAll()
     }
-
-    func testShouldReturnIfFileExistCorrectly() {
-        XCTAssertFalse(storage.fileExist(key: key))
-        storage.save(key: key, image: image)
-        XCTAssertTrue(storage.fileExist(key: key))
-    }
     
     func testShouldReturnErrorWhenLoadFails() {
         let fileNotFoundExpectation = expectation(description: "File found with key: \(key)")
-        XCTAssertFalse(storage.fileExist(key: key))
         storage.load(key: key) {
             switch $0 {
             case .success:
@@ -48,7 +41,6 @@ class StorageTests: XCTestCase {
     func testShouldReturnImageWhenLoadSucceed() {
         let fileFoundExpectation = expectation(description: "File not found with key: \(key)")
         storage.save(key: key, image: image)
-        XCTAssertTrue(storage.fileExist(key: key))
         storage.load(key: key) {
             switch $0 {
             case .success:
@@ -61,11 +53,13 @@ class StorageTests: XCTestCase {
     }
     
     func testShouldRemoveFileGivenTheKey() {
+        // Save a file and check that it exists
         storage.save(key: key, image: image)
-        XCTAssertTrue(storage.fileExist(key: key))
+        XCTAssertTrue(fileExist(key: key))
         
+        // Remove that file and check that it no longer exists
         storage.remove(key: key)
-        XCTAssertFalse(storage.fileExist(key: key))
+        XCTAssertFalse(fileExist(key: key))
     }
     
     func testShouldRemoveAllFiles() {
@@ -76,13 +70,33 @@ class StorageTests: XCTestCase {
         storage.save(key: key1, image: image)
         storage.save(key: key2, image: image)
         storage.save(key: key3, image: image)
-        XCTAssertTrue(storage.fileExist(key: key1))
-        XCTAssertTrue(storage.fileExist(key: key2))
-        XCTAssertTrue(storage.fileExist(key: key3))
+        XCTAssertTrue(fileExist(key: key1))
+        XCTAssertTrue(fileExist(key: key2))
+        XCTAssertTrue(fileExist(key: key3))
         
         storage.removeAll()
-        XCTAssertFalse(storage.fileExist(key: key1))
-        XCTAssertFalse(storage.fileExist(key: key2))
-        XCTAssertFalse(storage.fileExist(key: key3))
+        XCTAssertFalse(fileExist(key: key1))
+        XCTAssertFalse(fileExist(key: key2))
+        XCTAssertFalse(fileExist(key: key3))
+    }
+    
+    // MARK: - Helpers
+
+    private func fileExist(key: String) -> Bool {
+        var fileExists = false
+        let loadExpectation = expectation(description: "Could not load file with key \(key)")
+        
+        storage.load(key: key) {
+            switch $0 {
+            case .success:
+                fileExists = true
+            case .failure:
+                break
+            }
+            loadExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+        return fileExists
     }
 }
