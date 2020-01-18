@@ -110,9 +110,14 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UISear
     }
     
     private func setUpBindings() {
-        viewModel.onPhotosChanged = { [weak self] in
+        viewModel.onPhotosChanged = { [weak self] newPhotos in
             guard let `self` = self else { return }
-            self.collectionView.reloadData()
+        
+            // Animate insertion of new items only
+            let difference = self.viewModel.photos.count - newPhotos.count
+            let range = (difference..<(difference + newPhotos.count))
+            let insertIndexPaths = range.map { IndexPath(row: $0, section: 0) }
+            self.collectionView.insertItems(at: insertIndexPaths)
         }
         
         viewModel.isLoading = { [weak self] loading in

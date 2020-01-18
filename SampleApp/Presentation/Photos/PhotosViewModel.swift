@@ -14,7 +14,7 @@ class PhotosViewModel {
     private var paginatedItems: PaginatedItems<Photo>?
     private var currentSearch = ""
     var photos = [Photo]()
-    var onPhotosChanged: (() -> Void)?
+    var onPhotosChanged: ((_ newPhotos: [Photo]) -> Void)?
     var isLoading: ((Bool) -> Void)?
     var onError: ((Error) -> Void)?
     
@@ -37,7 +37,7 @@ class PhotosViewModel {
             case .success(let paginatedItems):
                 self.paginatedItems = paginatedItems
                 self.photos.append(contentsOf: paginatedItems.data)
-                self.runOnMainThread { self.onPhotosChanged?() }
+                self.runOnMainThread { self.onPhotosChanged?(paginatedItems.data) }
             case .failure(let error):
                 self.runOnMainThread { self.onError?(error) }
             }
@@ -50,7 +50,7 @@ class PhotosViewModel {
         currentSearch = ""
         paginatedItems = nil
         photos.removeAll()
-        onPhotosChanged?()
+        onPhotosChanged?([])
     }
     
     // MARK: - Private
