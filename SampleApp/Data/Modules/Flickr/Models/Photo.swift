@@ -6,7 +6,7 @@
 //  Copyright © 2020 Roberto Frontado. All rights reserved.
 //
 
-class Photo: Codable {
+struct Photo: Codable {
     let id: String
     let owner: String
     let secret: String

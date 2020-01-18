@@ -6,7 +6,7 @@
 //  Copyright © 2020 Roberto Frontado. All rights reserved.
 //
 
-class GetPhotosResponse: Codable {
+struct GetPhotosResponse: Codable {
     let paginatedItems: PaginatedItems<Photo>
     let stat: String
     
