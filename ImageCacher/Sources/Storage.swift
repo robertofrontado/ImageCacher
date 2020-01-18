@@ -64,7 +64,6 @@ class Storage {
                 let fileData = self.fileManager.contents(atPath: filePath.path),
                 let image = UIImage(data: fileData)
                 else {
-                    print("File not found with key: \(key)")
                     return completion(.failure(.fileNotFound))
             }
             

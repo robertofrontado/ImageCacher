@@ -1,0 +1,61 @@
+//
+//  PhotosViewModel.swift
+//  SampleApp
+//
+//  Created by Roberto Frontado on 18/01/2020.
+//  Copyright © 2020 Roberto Frontado. All rights reserved.
+//
+
+import Foundation
+
+class PhotosViewModel {
+    
+    private let flickrRepository: FlickrRepository
+    private var paginatedItems: PaginatedItems<Photo>?
+    private var currentSearch = ""
+    private var currentPage = 1
+    var photos = [Photo]()
+    var onPhotosChanged: (() -> Void)?
+    var isLoading: ((Bool) -> Void)?
+    var onError: ((Error) -> Void)?
+    
+    init(flickrRepository: FlickrRepository) {
+        self.flickrRepository = flickrRepository
+    }
+    
+    func fetchPhotos(search: String = "") {
+        if search != currentSearch { // New search, clean up old values
+            resetValues()
+        }
+
+        currentSearch = search
+        runOnMainThread { self.isLoading?(true) }
+        flickrRepository.getPhotos(search: search, page: 1) { [weak self] result in
+            guard let `self` = self else { return }
+            
+            switch result {
+            case .success(let paginatedItems):
+                self.paginatedItems = paginatedItems
+                self.photos.append(contentsOf: paginatedItems.data)
+                self.runOnMainThread { self.onPhotosChanged?() }
+            case .failure(let error):
+                self.runOnMainThread { self.onError?(error) }
+            }
+
+            self.runOnMainThread { self.isLoading?(false) }
+        }
+    }
+    
+    func resetValues() {
+        currentSearch = ""
+        currentPage = 1
+        photos.removeAll()
+        onPhotosChanged?()
+    }
+    
+    // MARK: - Private
+    
+    private func runOnMainThread(_ block: @escaping () -> Void) {
+        DispatchQueue.main.async(execute: block)
+    }
+}
