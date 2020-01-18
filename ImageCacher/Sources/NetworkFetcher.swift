@@ -17,7 +17,7 @@ class NetworkFetcher {
     }
     
     func fetch(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
-        self.task = urlSession.dataTask(with: url) { (data, response, error) in
+        task = urlSession.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
                 let domain = "Error fetching url: \(url.absoluteString)"
                 let genericError = NSError(domain: domain, code: -101, userInfo: nil)
@@ -27,6 +27,11 @@ class NetworkFetcher {
             completion(.success(data))
         }
         
-        self.task?.resume()
+        task?.resume()
+    }
+    
+    func cancel() {
+        task?.cancel()
+        task = nil
     }
 }

@@ -48,5 +48,12 @@ class NetworkFetcherTests: XCTestCase {
         
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testShouldCancelCurrentTask() {
+        networkFetcher.task = URLSessionTask()
+        
+        networkFetcher.cancel()
+        XCTAssertNil(networkFetcher.task)
+    }
 }
 
