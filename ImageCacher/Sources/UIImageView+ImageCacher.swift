@@ -27,6 +27,7 @@ extension UIImageView {
     public func imgc_loadImage(from url: URL, completion: ((UIImage?) -> Void)? = nil) {
         cancelLoadImage()
         
+        addActivityIndicator()
         imageCacher = ImageCacher(url: url)
         imageCacher?.loadImage(completion: { [weak self] image in
             guard let `self` = self, let image = image else { return }
@@ -37,6 +38,7 @@ extension UIImageView {
     
     func imgc_setImage(image: UIImage, completion: ((UIImage?) -> Void)? = nil) {
         DispatchQueue.main.async {
+            self.removeActivityIndicatior()
             self.image = image
             completion?(image)
         }
@@ -49,7 +51,15 @@ extension UIImageView {
         imageCacher = nil
     }
     
-    private func addActivityIndicator() -> UIActivityIndicatorView {
+    private func removeActivityIndicatior() {
+        let currentActivityIndicator = subviews.first(where: { $0 is UIActivityIndicatorView })
+        currentActivityIndicator?.removeFromSuperview()
+    }
+    
+    private func addActivityIndicator() {
+        let activityIndicatorAlreadyExists = subviews.first(where: { $0 is UIActivityIndicatorView }) != nil
+        if activityIndicatorAlreadyExists == true { return }
+        
         let activityIndicator = UIActivityIndicatorView()
         addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +69,5 @@ extension UIImageView {
         ])
         
         activityIndicator.startAnimating()
-        return activityIndicator
     }
 }
