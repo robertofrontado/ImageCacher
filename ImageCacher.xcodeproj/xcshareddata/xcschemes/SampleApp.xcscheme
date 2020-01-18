@@ -39,6 +39,16 @@
                ReferencedContainer = "container:ImageCacher.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A20FBBE523CF8E96004FE3C5"
+               BuildableName = "ImageCacherTests.xctest"
+               BlueprintName = "ImageCacherTests"
+               ReferencedContainer = "container:ImageCacher.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

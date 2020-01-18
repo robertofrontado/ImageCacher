@@ -11,8 +11,8 @@ import Foundation
 class PhotosViewModel {
     
     private let flickrRepository: FlickrRepository
-    private var paginatedItems: PaginatedItems<Photo>?
-    private var currentSearch = ""
+    private(set) var paginatedItems: PaginatedItems<Photo>?
+    private(set) var currentSearch = ""
     var photos = [Photo]()
     var onPhotosChanged: ((_ newPhotos: [Photo]) -> Void)?
     var isLoading: ((Bool) -> Void)?
