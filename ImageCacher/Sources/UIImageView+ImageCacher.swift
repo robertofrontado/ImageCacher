@@ -24,7 +24,10 @@ extension UIImageView {
         }
     }
 
-    public func imgc_loadImage(from url: URL, placeholder: UIImage? = nil, completion: ((UIImage?) -> Void)? = nil) {
+    public func imgc_loadImage(from url: URL,
+                               placeholder: UIImage? = nil,
+                               animation: @escaping DisplayAnimation = Animations.crossDissolve,
+                               completion: ((UIImage?) -> Void)? = nil) {
         cancelLoadImage()
         
         addActivityIndicator()
@@ -32,16 +35,14 @@ extension UIImageView {
         imageCacher?.loadImage(completion: { [weak self] image in
             guard let `self` = self, let image = image ?? placeholder else { return }
             
-            self.imgc_setImage(image: image, completion: completion)
+            self.imgc_setImage(image: image, animation: animation, completion: completion)
         })
     }
     
-    func imgc_setImage(image: UIImage, completion: ((UIImage?) -> Void)? = nil) {
+    func imgc_setImage(image: UIImage, animation: @escaping DisplayAnimation = Animations.crossDissolve, completion: ((UIImage?) -> Void)? = nil) {
         DispatchQueue.main.async {
             self.removeActivityIndicatior()
-            self.alpha = 0
-            self.image = image
-            UIView.animate(withDuration: 0.3) { self.alpha = 1 }
+            animation(self, image, 0.3)
             completion?(image)
         }
     }
