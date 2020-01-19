@@ -11,7 +11,7 @@ import Foundation
 class FlickrRepository: BaseRepository<FlickrAPI> {
     
     func getPhotos(search: String = "", page: Int = 1, completion: @escaping (Result<PaginatedItems<Photo>, Error>) -> Void) {
-        request(target: .getPhotos(search: search, page: page)) { (data, response, error) in
+        request(target: .getPhotos(search: search, page: page, pageSize: 90)) { (data, response, error) in
             guard let data = data else {
                 let error = error ?? NSError(domain: "Error during request", code: 0, userInfo: nil)
                 return completion(.failure(error))

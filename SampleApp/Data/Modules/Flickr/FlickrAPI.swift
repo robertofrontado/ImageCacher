@@ -9,7 +9,7 @@
 import Foundation
 
 enum FlickrAPI {
-    case getPhotos(search: String, page: Int)
+    case getPhotos(search: String, page: Int, pageSize: Int)
 }
 
 extension FlickrAPI: APITargetType {
@@ -45,10 +45,11 @@ extension FlickrAPI: APITargetType {
         ]
         
         switch self {
-        case .getPhotos(let search, let page):
+        case .getPhotos(let search, let page, let pageSize):
             parameters["method"] = search.isEmpty ? "flickr.photos.getRecent" : "flickr.photos.search"
             parameters["text"] = search
             parameters["page"] = page
+            parameters["per_page"] = pageSize
         }
         return parameters
     }
