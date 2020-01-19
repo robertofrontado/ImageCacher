@@ -298,7 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				A23C47A523D3639900F32697 /* Foundation */,
-				A23C477D23D3481100F32697 /* Photos */,
+				A2A79FFB23D4985B001FAE92 /* Modules */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -401,6 +401,14 @@
 				A2A79FEF23D46122001FAE92 /* StubURLSession.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A2A79FFB23D4985B001FAE92 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				A23C477D23D3481100F32697 /* Photos */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

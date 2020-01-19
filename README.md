@@ -37,7 +37,7 @@ Here are more features that would be nice to have were out of the scope of this 
 
 - DiskStorage stores the images in `Library/Caches` which gets clean up automatically when the OS needs to free up some space.
 
-- The [Storage]() protocol allows you to create a custom storage mechanism, like a memory layer (but it was outside of the scope of this project).
+- The [Storage](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/Storage.swift#15) protocol allows you to create a custom storage mechanism, like a memory layer (but it was outside of the scope of this project).
 
 - ObjectAssociation from Objc: I used this to be able to cancel previous requests.
 
@@ -59,13 +59,13 @@ PackageManager *- Coming soon*
 imageView.imgc_loadImage(from: url, placeholder: placeholder)
 ```
 
-For more information please check [imgc_loadImage(from:placeholder:animation:completion)](https://github.com/robertofrontado/ImageCacher/blob/develop/ImageCacher/Sources/UIImageView%2BImageCacher.swift#L27)
+For more information please check [imgc_loadImage(from:placeholder:animation:completion)](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/UIImageView%2BImageCacher.swift#L27)
 
 
 
 ## SampleApp
 
-You can always check the [SampleApp]() to see how to integrate ImageCacher with your application.
+You can always check the [SampleApp](https://github.com/robertofrontado/ImageCacher/tree/master/SampleApp) to see how to integrate ImageCacher with your application.
 
 
 
@@ -77,8 +77,8 @@ This module is called data because its sole purpose is to manage data.
 
 This layer consists on:
 
-- [Foundation](): base classes that are going to be used in modules
-- [Modules]()
+- [Foundation](https://github.com/robertofrontado/ImageCacher/tree/master/SampleApp/Data/Foundation): base classes that are going to be used in modules
+- [Modules](https://github.com/robertofrontado/ImageCacher/tree/master/SampleApp/Data/Modules)
   - API Targets: used to define every endpoint
   - Repositories: used to comunicate with the api and parse the response into an object (typesafe)
 
@@ -88,8 +88,8 @@ This is where all the UI logic is placed. It was implemented by using MVVM.
 
 This layer consists on:
 
-- [Foundation](): base classes that are going to be used in modules
-- [Modules]()
+- [Foundation](https://github.com/robertofrontado/ImageCacher/tree/master/SampleApp/Presentation/Foundation): base classes that are going to be used in modules
+- [Modules](https://github.com/robertofrontado/ImageCacher/tree/master/SampleApp/Presentation/Modules)
   - ViewController: in charge of the UI.
   - ViewModel: business logic (Mainly fetches data from the repositories and notifies to whatever is listening about the changes in the data).
 
