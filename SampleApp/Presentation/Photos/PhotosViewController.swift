@@ -37,7 +37,7 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UISear
         collectionViewDelegate.setOnWillDisplayCellAtIndexPath { [weak self] indexPath in
             guard let `self` = self else { return }
             
-            if self.viewModel.photos.count - PhotosViewController.LOAD_MORE_THRESHOLD == indexPath.row {
+            if (self.viewModel.photos.count - PhotosViewController.LOAD_MORE_THRESHOLD) == indexPath.row {
                 self.viewModel.fetchPhotos(search: self.searchBar.text ?? "")
             }
         }
