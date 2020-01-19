@@ -6,7 +6,7 @@
 //  Copyright © 2020 Roberto Frontado. All rights reserved.
 //
 
-struct Photo: Codable {
+struct Photo: Codable, Equatable {
     let id: String
     let owner: String
     let secret: String
@@ -27,5 +27,9 @@ struct Photo: Codable {
         case isPublic = "ispublic"
         case isFriend = "isfriend"
         case isFamily = "isfamily"
+    }
+    
+    static func == (lhs: Photo, rhs: Photo) -> Bool {
+        return lhs.id == rhs.id
     }
 }

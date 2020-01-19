@@ -12,25 +12,64 @@ import XCTest
 class FlickrRepositoryTests: XCTestCase {
 
     var repository: FlickrRepository!
+    var stubURLSession: StubURLSession!
     
     override func setUp() {
-        repository = FlickrRepository()
+        stubURLSession = StubURLSession()
+        repository = FlickrRepository(apiTarget: FlickrAPI.self, urlSession: stubURLSession)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testShouldReturnSuccessWhenFetchPhotosSucceed() {
+        let mockGetPhotosResponse = Mocks.getGETPhotosResponse()
+        let data = try! JSONEncoder().encode(mockGetPhotosResponse)
+        stubURLSession.next = .success(data)
+        let successExpectation = expectation(description: "GetPhotos failed")
+        
+        repository.getPhotos {
+            switch $0 {
+            case .success(let paginatedItems):
+                XCTAssertEqual(paginatedItems, mockGetPhotosResponse.paginatedItems)
+                
+                successExpectation.fulfill()
+            case .failure:
+                break
+            }
         }
+        
+        waitForExpectations(timeout: 10, handler: nil)
     }
-
+    
+    func testShouldReturnFailureWhenFetchPhotosFails() {
+        stubURLSession.next = .failure(NSError(domain: "Not found", code: 404, userInfo: nil))
+        let failureExpectation = expectation(description: "GetPhotos succeeded")
+        
+        repository.getPhotos {
+            switch $0 {
+            case .success:
+                break
+            case .failure:
+                failureExpectation.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testShouldReturnFailureWhenFetchPhotosCanNotParseTheResponse() {
+        let mockPhoto = Mocks.photo
+        let data = try! JSONEncoder().encode(mockPhoto)
+        stubURLSession.next = .success(data)
+        let parseExpectation = expectation(description: "GetPhotos couldn't parse the URLResponse")
+        
+        repository.getPhotos {
+            switch $0 {
+            case .success:
+                break
+            case .failure:
+                parseExpectation.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

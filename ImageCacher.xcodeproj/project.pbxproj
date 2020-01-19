@@ -49,6 +49,8 @@
 		A2A79FE523D3B42B001FAE92 /* PhotosViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FE423D3B42B001FAE92 /* PhotosViewModelTests.swift */; };
 		A2A79FE823D3B43D001FAE92 /* MockFlickrRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FE723D3B43D001FAE92 /* MockFlickrRepository.swift */; };
 		A2A79FEA23D3B4A8001FAE92 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FE923D3B4A8001FAE92 /* Mocks.swift */; };
+		A2A79FEE23D45F79001FAE92 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FED23D45F79001FAE92 /* URLSessionProtocol.swift */; };
+		A2A79FF023D46122001FAE92 /* StubURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FEF23D46122001FAE92 /* StubURLSession.swift */; };
 		A2C6CFF223D1AFF2007AFD6B /* UIImageView+ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */; };
 		A2C6CFF423D1B9B9007AFD6B /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */; };
 /* End PBXBuildFile section */
@@ -139,6 +141,8 @@
 		A2A79FE423D3B42B001FAE92 /* PhotosViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModelTests.swift; sourceTree = "<group>"; };
 		A2A79FE723D3B43D001FAE92 /* MockFlickrRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlickrRepository.swift; sourceTree = "<group>"; };
 		A2A79FE923D3B4A8001FAE92 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		A2A79FED23D45F79001FAE92 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		A2A79FEF23D46122001FAE92 /* StubURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
 		A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageCacher.swift"; sourceTree = "<group>"; };
 		A2C6CFF323D1B9B9007AFD6B /* StorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,11 +244,11 @@
 		A20FBC1323CF8EDA004FE3C5 /* SampleAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				A2A79FE623D3B431001FAE92 /* Mocks */,
+				A2A79FE623D3B431001FAE92 /* Helpers */,
 				A20FBC1423CF8EDA004FE3C5 /* SampleAppTests.swift */,
-				A20FBC1623CF8EDA004FE3C5 /* Info.plist */,
 				A23C479223D356C100F32697 /* FlickrRepositoryTests.swift */,
 				A2A79FE423D3B42B001FAE92 /* PhotosViewModelTests.swift */,
+				A20FBC1623CF8EDA004FE3C5 /* Info.plist */,
 			);
 			path = SampleAppTests;
 			sourceTree = "<group>";
@@ -325,6 +329,7 @@
 				A23C479823D357B900F32697 /* BaseRepository.swift */,
 				A23C479423D356F800F32697 /* APITargetType.swift */,
 				A23C478E23D3544000F32697 /* APIRequestMethod.swift */,
+				A2A79FED23D45F79001FAE92 /* URLSessionProtocol.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -376,13 +381,14 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		A2A79FE623D3B431001FAE92 /* Mocks */ = {
+		A2A79FE623D3B431001FAE92 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				A2A79FE923D3B4A8001FAE92 /* Mocks.swift */,
 				A2A79FE723D3B43D001FAE92 /* MockFlickrRepository.swift */,
+				A2A79FEF23D46122001FAE92 /* StubURLSession.swift */,
 			);
-			path = Mocks;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -583,6 +589,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2A79FEE23D45F79001FAE92 /* URLSessionProtocol.swift in Sources */,
 				A2A79FCB23D36CEC001FAE92 /* Photo+ImageUrl.swift in Sources */,
 				A2A79FC723D36609001FAE92 /* ImageCollectionViewCell.swift in Sources */,
 				A23C47A823D363AD00F32697 /* GridCollectionViewDelegate.swift in Sources */,
@@ -614,6 +621,7 @@
 				A20FBC1523CF8EDA004FE3C5 /* SampleAppTests.swift in Sources */,
 				A2A79FE823D3B43D001FAE92 /* MockFlickrRepository.swift in Sources */,
 				A2A79FE523D3B42B001FAE92 /* PhotosViewModelTests.swift in Sources */,
+				A2A79FF023D46122001FAE92 /* StubURLSession.swift in Sources */,
 				A2A79FEA23D3B4A8001FAE92 /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

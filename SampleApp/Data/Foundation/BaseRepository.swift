@@ -11,10 +11,10 @@ import Foundation
 class BaseRepository<T: APITargetType> {
 
     let apiTarget: T.Type
-    let urlSession: URLSession
+    let urlSession: URLSessionProtocol
     var currentTask: URLSessionTask?
     
-    init(apiTarget: T.Type, urlSession: URLSession = .shared) {
+    init(apiTarget: T.Type, urlSession: URLSessionProtocol = URLSession.shared) {
         self.apiTarget = apiTarget
         self.urlSession = urlSession
     }

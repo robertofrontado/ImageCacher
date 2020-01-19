@@ -26,4 +26,8 @@ class Mocks {
                               numPages: 10,
                               data: [Mocks.photo])
     }
+    
+    static func getGETPhotosResponse() -> GetPhotosResponse {
+        return GetPhotosResponse(paginatedItems: getPaginatedItems(), stat: "ok")
+    }
 }

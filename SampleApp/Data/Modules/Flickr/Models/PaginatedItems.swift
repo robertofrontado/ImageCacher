@@ -6,7 +6,8 @@
 //  Copyright © 2020 Roberto Frontado. All rights reserved.
 //
 
-struct PaginatedItems<T: Codable>: Codable {
+struct PaginatedItems<T>: Codable, Equatable where T: Codable & Equatable {
+    
     let page: Int
     let pageSize: Int
     let numPages: Int
@@ -17,5 +18,12 @@ struct PaginatedItems<T: Codable>: Codable {
         case pageSize = "perpage"
         case numPages = "pages"
         case data = "photo"
+    }
+    
+    static func == (lhs: PaginatedItems<T>, rhs: PaginatedItems<T>) -> Bool {
+        return lhs.page == rhs.page
+            && lhs.pageSize == rhs.pageSize
+            && lhs.numPages == rhs.numPages
+            && lhs.data == rhs.data
     }
 }
