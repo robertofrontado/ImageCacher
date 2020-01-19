@@ -1,6 +1,6 @@
 # ImageCacher
 
-ImageCacher is a lightweight framework with the sole purpose of caching images
+ImageCacher is a lightweight framework with the sole purpose of caching images.
 
 
 
@@ -14,23 +14,30 @@ ImageCacher is a lightweight framework with the sole purpose of caching images
 
 
 
-## Roadmad
+## Roadmap
 
-Here are more features that would be nice to have but were out of the scope of this project
+Here are more features that would be nice to have but were out of the scope of this project:
 
-- [ ] Memory Layer using NSCache
+- [ ] Memory Layer using `NSCache`
 
 - [ ] Expiration policy: Even though at the moment the files are being stored at `Library/Caches` and they will get removed eventually by the OS, would be nice to offer a way of defining the expiration date of a file.
+
+- [ ] More animations
 
 - More customization
 
   - [ ] Animation duration
-
-  - [ ] Provide custom [Storage](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/Storage.swift#L15)
-
+- [ ] Provide custom [Storage](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/Storage.swift#L15)
   - [ ] Provide custom [Fetcher](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/Fetcher.swift#L11)
 
-    
+- SampleApp
+
+  - Data layer
+    - [ ] Support JSONEncoding 
+    - [ ] Add missing cases APIRequestMethod (only supports `get`)
+    - [ ] Include headers in URLRequest
+
+  
 
 ## Considerations
 
@@ -39,6 +46,8 @@ Here are more features that would be nice to have but were out of the scope of t
 - The [Storage](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/Storage.swift#15) protocol allows you to create a custom storage mechanism, like a memory layer which I wanted to add but it was outside of the scope of this project.
 
 - ObjectAssociation from Objc: I used this to be able to cancel previous requests.
+
+- Images are stored as `.png`
 
   
 
@@ -64,7 +73,7 @@ For more information please check [imgc_loadImage(from:placeholder:animation:com
 
 ## SampleApp
 
-You can always check the [SampleApp](https://github.com/robertofrontado/ImageCacher/tree/master/SampleApp) to see how to integrate ImageCacher with your application.
+You can always check the [SampleApp](https://github.com/robertofrontado/ImageCacher/tree/master/SampleApp) to see how to integrate ImageCacher in your application.
 
 
 
