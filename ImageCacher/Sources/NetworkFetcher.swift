@@ -20,7 +20,7 @@ class NetworkFetcher: Fetcher {
         task = urlSession.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
                 let domain = "Error fetching url: \(url.absoluteString)"
-                let genericError = NSError(domain: domain, code: -101, userInfo: nil)
+                let genericError = NSError(domain: domain, code: NSURLErrorUnknown, userInfo: nil)
                 return completion(.failure(error ?? genericError))
             }
             
