@@ -57,6 +57,6 @@ class GridCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: 55)
+        return CGSize(width: collectionView.bounds.size.width, height: 96)
     }
 }
