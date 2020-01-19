@@ -13,19 +13,18 @@ class DiskStorage: Storage {
     
     static let shared = DiskStorage(fileManager: .default)
     
-    let STORAGE_PATH = "com.frontado.ImageCacher"
     private let fileManager: FileManager
     let directoryURL: URL
     
-    lazy var dispatchQueue : DispatchQueue = {
+    lazy var dispatchQueue: DispatchQueue = {
         return DispatchQueue(label: "com.frontado.ImageCacher.serial.queue", attributes: [])
     }()
     
-    init(fileManager: FileManager) {
+    init(fileManager: FileManager, storagePath: String = "com.frontado.ImageCacher") {
         self.fileManager = fileManager
         
         let url = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-        directoryURL = url.appendingPathComponent(STORAGE_PATH, isDirectory: true)
+        directoryURL = url.appendingPathComponent(storagePath, isDirectory: true)
         
         createDirectory()
     }

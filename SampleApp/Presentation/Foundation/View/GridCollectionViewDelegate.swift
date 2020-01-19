@@ -12,13 +12,13 @@ class GridCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollecti
     
     typealias OnCellIndexPath = (IndexPath) -> Void
     
-    let numberOfRows: CGFloat
+    let numberOfColumns: CGFloat
     let spacing: CGFloat
     private var onCellSelected: OnCellIndexPath?
     private var onWillDisplayCellAtIndexPath: OnCellIndexPath?
     
-    init(numberOfRows: CGFloat = 2, spacing: CGFloat = 5) {
-        self.numberOfRows = numberOfRows
+    init(numberOfColumns: CGFloat = 2, spacing: CGFloat = 5) {
+        self.numberOfColumns = numberOfColumns
         self.spacing = spacing
     }
     
@@ -36,7 +36,7 @@ class GridCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellWidth = (collectionView.frame.width / numberOfRows) - (spacing * 3)
+        let cellWidth = (collectionView.frame.width / numberOfColumns) - (spacing * 3)
         return CGSize(width: cellWidth, height: cellWidth)
     }
     

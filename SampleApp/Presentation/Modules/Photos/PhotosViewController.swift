@@ -15,7 +15,7 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UISear
     
     let searchBar = UISearchBar()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    let collectionViewDelegate = GridCollectionViewDelegate(numberOfRows: 3, spacing: PhotosViewController.CELL_SPACING)
+    let collectionViewDelegate = GridCollectionViewDelegate(numberOfColumns: 3, spacing: PhotosViewController.CELL_SPACING)
     let viewModel: PhotosViewModel
     let debouncer = Debouncer(interval: 0.5)
     var loadingView: UIView?

@@ -47,14 +47,19 @@ class PhotosViewModelTests: XCTestCase {
     }
     
     func testShouldFetchNextPageWhenUsingTheSameSearch() {
-        viewModel.fetchPhotos()
+        let search = "search"
+        
+        viewModel.fetchPhotos(search: search)
         XCTAssertEqual(viewModel.paginatedItems?.page, 1)
+        XCTAssertEqual(viewModel.currentSearch, search)
         
-        viewModel.fetchPhotos()
+        viewModel.fetchPhotos(search: search)
         XCTAssertEqual(viewModel.paginatedItems?.page, 2)
+        XCTAssertEqual(viewModel.currentSearch, search)
         
-        viewModel.fetchPhotos()
+        viewModel.fetchPhotos(search: search)
         XCTAssertEqual(viewModel.paginatedItems?.page, 3)
+        XCTAssertEqual(viewModel.currentSearch, search)
     }
     
     func testShouldResetValuesCorrectly() {
