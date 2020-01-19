@@ -27,7 +27,7 @@ Here are more features that would be nice to have but were out of the scope of t
 - More customization
 
   - [ ] Animation duration
-- [ ] Provide custom [Storage](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/Storage.swift#L15)
+  - [ ] Provide custom [Storage](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/Storage.swift#L15)
   - [ ] Provide custom [Fetcher](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/Fetcher.swift#L11)
 
 - SampleApp
