@@ -13,9 +13,6 @@ class DiskStorageTests: XCTestCase {
     
     var storage: DiskStorage!
     let key = "image.png"
-    let image = UIImage(named: "grumpy-cat",
-                        in: Bundle(for: DiskStorageTests.self),
-                        compatibleWith: nil)!
     
     override func setUp() {
         storage = DiskStorage(fileManager: .default)
@@ -40,7 +37,7 @@ class DiskStorageTests: XCTestCase {
     
     func testShouldReturnImageWhenLoadSucceed() {
         let fileFoundExpectation = expectation(description: "File not found with key: \(key)")
-        storage.save(key: key, image: image)
+        storage.save(key: key, image: Mocks.image)
         storage.load(key: key) {
             switch $0 {
             case .success:
@@ -54,7 +51,7 @@ class DiskStorageTests: XCTestCase {
     
     func testShouldRemoveFileGivenTheKey() {
         // Save a file and check that it exists
-        storage.save(key: key, image: image)
+        storage.save(key: key, image: Mocks.image)
         XCTAssertTrue(fileExist(key: key))
         
         // Remove that file and check that it no longer exists
@@ -67,9 +64,9 @@ class DiskStorageTests: XCTestCase {
         let key2 = "image2.png"
         let key3 = "image3.png"
         
-        storage.save(key: key1, image: image)
-        storage.save(key: key2, image: image)
-        storage.save(key: key3, image: image)
+        storage.save(key: key1, image: Mocks.image)
+        storage.save(key: key2, image: Mocks.image)
+        storage.save(key: key3, image: Mocks.image)
         XCTAssertTrue(fileExist(key: key1))
         XCTAssertTrue(fileExist(key: key2))
         XCTAssertTrue(fileExist(key: key3))

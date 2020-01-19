@@ -13,7 +13,7 @@ private var AssociatedObjectHandle: UInt8 = 0
 
 extension UIImageView {
     
-    private var imageCacher: ImageCacher? {
+    internal var imageCacher: ImageCacher? {
         get {
             // Create and associate an instance of networkFetcher to this imageView if it doesn't exist
             // https://stackoverflow.com/questions/24133058/is-there-a-way-to-set-associated-objects-in-swift
@@ -53,12 +53,12 @@ extension UIImageView {
         imageCacher = nil
     }
     
-    private func removeActivityIndicatior() {
+    internal func removeActivityIndicatior() {
         let currentActivityIndicator = subviews.first(where: { $0 is UIActivityIndicatorView })
         currentActivityIndicator?.removeFromSuperview()
     }
     
-    private func addActivityIndicator() {
+    internal func addActivityIndicator() {
         let activityIndicatorAlreadyExists = subviews.first(where: { $0 is UIActivityIndicatorView }) != nil
         if activityIndicatorAlreadyExists == true { return }
         

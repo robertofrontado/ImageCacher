@@ -18,7 +18,7 @@ class NetworkFetcherTests: XCTestCase {
     }
     
     func testShouldReturnSuccessWhenFetchingDataSucceed() {
-        let url = URL(string: "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png")!
+        let url = Mocks.url
         let fetchExcpectation = expectation(description: "Could not fetch file from url: \(url)")
         
         networkFetcher.fetch(from: url) {

@@ -52,6 +52,8 @@
 		A2A79FEE23D45F79001FAE92 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FED23D45F79001FAE92 /* URLSessionProtocol.swift */; };
 		A2A79FF023D46122001FAE92 /* StubURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FEF23D46122001FAE92 /* StubURLSession.swift */; };
 		A2A79FF223D467D8001FAE92 /* DebouncerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FF123D467D8001FAE92 /* DebouncerTests.swift */; };
+		A2A79FF423D469ED001FAE92 /* ImageViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FF323D469ED001FAE92 /* ImageViewExtensionTests.swift */; };
+		A2A79FF623D46AEA001FAE92 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FF523D46AEA001FAE92 /* Mocks.swift */; };
 		A2C6CFF223D1AFF2007AFD6B /* UIImageView+ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */; };
 		A2C6CFF423D1B9B9007AFD6B /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C6CFF323D1B9B9007AFD6B /* DiskStorageTests.swift */; };
 /* End PBXBuildFile section */
@@ -145,6 +147,8 @@
 		A2A79FED23D45F79001FAE92 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		A2A79FEF23D46122001FAE92 /* StubURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
 		A2A79FF123D467D8001FAE92 /* DebouncerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebouncerTests.swift; sourceTree = "<group>"; };
+		A2A79FF323D469ED001FAE92 /* ImageViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtensionTests.swift; sourceTree = "<group>"; };
+		A2A79FF523D46AEA001FAE92 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		A2C6CFF123D1AFF2007AFD6B /* UIImageView+ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageCacher.swift"; sourceTree = "<group>"; };
 		A2C6CFF323D1B9B9007AFD6B /* DiskStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,6 +228,7 @@
 				A23C477323D3355D00F32697 /* NetworkFetcherTests.swift */,
 				A2C6CFF323D1B9B9007AFD6B /* DiskStorageTests.swift */,
 				A2A79FD923D3AE83001FAE92 /* ImageCacherTests.swift */,
+				A2A79FF323D469ED001FAE92 /* ImageViewExtensionTests.swift */,
 				A20FBBED23CF8E96004FE3C5 /* Info.plist */,
 				A23C477123D2629800F32697 /* Assets.xcassets */,
 			);
@@ -380,6 +385,7 @@
 			children = (
 				A2A79FDC23D3AE91001FAE92 /* MockFetcher.swift */,
 				A2A79FDE23D3AE9D001FAE92 /* MockStorage.swift */,
+				A2A79FF523D46AEA001FAE92 /* Mocks.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -582,7 +588,9 @@
 			files = (
 				A23C477423D3355D00F32697 /* NetworkFetcherTests.swift in Sources */,
 				A2A79FDD23D3AE91001FAE92 /* MockFetcher.swift in Sources */,
+				A2A79FF423D469ED001FAE92 /* ImageViewExtensionTests.swift in Sources */,
 				A2A79FDA23D3AE83001FAE92 /* ImageCacherTests.swift in Sources */,
+				A2A79FF623D46AEA001FAE92 /* Mocks.swift in Sources */,
 				A2A79FDF23D3AE9D001FAE92 /* MockStorage.swift in Sources */,
 				A2C6CFF423D1B9B9007AFD6B /* DiskStorageTests.swift in Sources */,
 			);

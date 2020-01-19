@@ -138,6 +138,7 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UISear
         
         viewModel.onError = { [weak self] error in
             guard let `self` = self else { return }
+            
             let alertVC = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertVC, animated: true, completion: nil)
