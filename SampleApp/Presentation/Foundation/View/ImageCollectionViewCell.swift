@@ -42,7 +42,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(imageUrl: URL) {
-        imageView.imgc_loadImage(from: imageUrl)
+        let placeholderImage = UIImage(named: "broken-image")
+        imageView.imgc_loadImage(from: imageUrl, placeholder: placeholderImage)
     }
 
 }

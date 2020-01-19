@@ -24,13 +24,13 @@ extension UIImageView {
         }
     }
 
-    public func imgc_loadImage(from url: URL, completion: ((UIImage?) -> Void)? = nil) {
+    public func imgc_loadImage(from url: URL, placeholder: UIImage? = nil, completion: ((UIImage?) -> Void)? = nil) {
         cancelLoadImage()
         
         addActivityIndicator()
         imageCacher = ImageCacher(url: url)
         imageCacher?.loadImage(completion: { [weak self] image in
-            guard let `self` = self, let image = image else { return }
+            guard let `self` = self, let image = image ?? placeholder else { return }
             
             self.imgc_setImage(image: image, completion: completion)
         })

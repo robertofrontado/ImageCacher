@@ -77,4 +77,18 @@ class ImageViewExtensionTests: XCTestCase {
         
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testShouldSetImagePlaceholderWhenLoadImageFails() {
+        let url = URL(string: "https://")! // Nothing to fetch
+        let imagePlaceholder = Mocks.image
+        
+        let loadImageExpectation = expectation(description: "Couldn't set image placeholder correctly")
+        imageView.imgc_loadImage(from: url, placeholder: imagePlaceholder) { image in
+            XCTAssertEqual(image, imagePlaceholder)
+            XCTAssertEqual(self.imageView.image, imagePlaceholder)
+            loadImageExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

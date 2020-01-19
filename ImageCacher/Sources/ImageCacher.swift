@@ -60,6 +60,7 @@ class ImageCacher {
                 completion(image)
             case .failure(let error):
                 print("ImageCacher error: \(error.localizedDescription)")
+                completion(nil)
             }
         }
     }
