@@ -17,7 +17,7 @@ ImageCacher is a lightweight framework with the sole purpose of caching images
 
 ## Roadmad
 
-Here are more features that would be nice to have were out of the scope of this project
+Here are more features that would be nice to have but were out of the scope of this project
 
 - [ ] Memory Layer using NSCache
 
