@@ -26,7 +26,7 @@ extension UIImageView {
 
     public func imgc_loadImage(from url: URL,
                                placeholder: UIImage? = nil,
-                               animation: @escaping DisplayAnimation = Animations.crossDissolve,
+                               animation: @escaping ImageCacherAnimation = ImageCacherAnimations.crossDissolve,
                                completion: ((UIImage?) -> Void)? = nil) {
         cancelLoadImage()
         
@@ -39,7 +39,7 @@ extension UIImageView {
         })
     }
     
-    func imgc_setImage(image: UIImage, animation: @escaping DisplayAnimation = Animations.crossDissolve, completion: ((UIImage?) -> Void)? = nil) {
+    func imgc_setImage(image: UIImage, animation: @escaping ImageCacherAnimation = ImageCacherAnimations.crossDissolve, completion: ((UIImage?) -> Void)? = nil) {
         DispatchQueue.main.async {
             self.removeActivityIndicatior()
             animation(self, image, 0.3)
