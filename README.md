@@ -7,7 +7,6 @@ ImageCacher is a lightweight framework with the sole purpose of caching images
 ## Features
 
 - [x] Download an image from a remote server and caches it on disk
-
 - [x] Disk operations are performed in background
 - [x] Thread-safe
 - [x] Out-of-the-box animations and allows you to create your own
@@ -35,9 +34,9 @@ Here are more features that would be nice to have but were out of the scope of t
 
 ## Considerations
 
-- DiskStorage stores the images in `Library/Caches` which gets clean up automatically when the OS needs to free up some space.
+- DiskStorage stores the images in `Library/Caches` which gets clean up automatically when the OS needs the space.
 
-- The [Storage](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/Storage.swift#15) protocol allows you to create a custom storage mechanism, like a memory layer (but it was outside of the scope of this project).
+- The [Storage](https://github.com/robertofrontado/ImageCacher/blob/master/ImageCacher/Sources/Storage.swift#15) protocol allows you to create a custom storage mechanism, like a memory layer which I wanted to add but it was outside of the scope of this project.
 
 - ObjectAssociation from Objc: I used this to be able to cancel previous requests.
 
@@ -47,7 +46,7 @@ Here are more features that would be nice to have but were out of the scope of t
 
 #### Installation
 
-Cocoapods * - Coming soon*
+Cocoapods *- Coming soon*
 
 Carthage *- Coming soon*
 
