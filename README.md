@@ -15,7 +15,7 @@ ImageCacher is a lightweight framework with the sole purpose of caching images
 
 
 
-##Roadmad
+## Roadmad
 
 Here are more features that would be nice to have were out of the scope of this project
 
@@ -45,7 +45,7 @@ Here are more features that would be nice to have were out of the scope of this 
 
 ## Getting Started
 
-####Installation
+#### Installation
 
 Cocoapods * - Coming soon*
 
@@ -53,7 +53,7 @@ Carthage *- Coming soon*
 
 PackageManager *- Coming soon*
 
-####Usage
+#### Usage
 
 ```swift
 imageView.imgc_loadImage(from: url, placeholder: placeholder)
@@ -82,7 +82,7 @@ This layer consists on:
   - API Targets: used to define every endpoint
   - Repositories: used to comunicate with the api and parse the response into an object (typesafe)
 
-####Presentation
+#### Presentation
 
 This is where all the UI logic is placed. It was implemented by using MVVM.
 
