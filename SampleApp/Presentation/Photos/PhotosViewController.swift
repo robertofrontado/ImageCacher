@@ -18,6 +18,7 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UISear
     let collectionViewDelegate = GridCollectionViewDelegate(numberOfRows: 3, spacing: PhotosViewController.CELL_SPACING)
     let viewModel: PhotosViewModel
     let debouncer = Debouncer(interval: 0.5)
+    var loadingView: UIView?
     
     init(viewModel: PhotosViewModel) {
         self.viewModel = viewModel
@@ -63,7 +64,11 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UISear
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionFooter else { return UICollectionReusableView() }
         
-        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(LoadingCollectionViewFooterView.self)", for: indexPath)
+        let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(LoadingCollectionViewFooterView.self)", for: indexPath)
+        
+        loadingView = footerView
+        
+        return footerView
     }
     
     // MARK: - SearchBar
@@ -127,7 +132,8 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UISear
         
         viewModel.isLoading = { [weak self] loading in
             guard let `self` = self else { return }
-            // TODO: - Add implementation
+            
+            self.loadingView?.isHidden = !loading
         }
         
         viewModel.onError = { [weak self] error in

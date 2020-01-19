@@ -55,4 +55,8 @@ class GridCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         onWillDisplayCellAtIndexPath?(indexPath)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width, height: 55)
+    }
 }

@@ -37,6 +37,7 @@
 		A2A79FC723D36609001FAE92 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FC623D36609001FAE92 /* ImageCollectionViewCell.swift */; };
 		A2A79FC923D369CA001FAE92 /* PhotosInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FC823D369CA001FAE92 /* PhotosInitializer.swift */; };
 		A2A79FCB23D36CEC001FAE92 /* Photo+ImageUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FCA23D36CEC001FAE92 /* Photo+ImageUrl.swift */; };
+		A2A79FCD23D37875001FAE92 /* LoadingCollectionViewFooterVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FCC23D37875001FAE92 /* LoadingCollectionViewFooterVIew.swift */; };
 		A2A79FD223D3811A001FAE92 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FD123D3811A001FAE92 /* Debouncer.swift */; };
 		A2A79FD623D39F56001FAE92 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FD523D39F56001FAE92 /* ImageCacher.swift */; };
 		A2A79FD823D3A386001FAE92 /* UIView+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A79FD723D3A386001FAE92 /* UIView+DropShadow.swift */; };
@@ -126,6 +127,7 @@
 		A2A79FC623D36609001FAE92 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2A79FC823D369CA001FAE92 /* PhotosInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosInitializer.swift; sourceTree = "<group>"; };
 		A2A79FCA23D36CEC001FAE92 /* Photo+ImageUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+ImageUrl.swift"; sourceTree = "<group>"; };
+		A2A79FCC23D37875001FAE92 /* LoadingCollectionViewFooterVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewFooterVIew.swift; sourceTree = "<group>"; };
 		A2A79FD123D3811A001FAE92 /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debouncer.swift; path = ../../Commons/Debouncer.swift; sourceTree = "<group>"; };
 		A2A79FD523D39F56001FAE92 /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
 		A2A79FD723D3A386001FAE92 /* UIView+DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DropShadow.swift"; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				A23C47A723D363AD00F32697 /* GridCollectionViewDelegate.swift */,
+				A2A79FCC23D37875001FAE92 /* LoadingCollectionViewFooterVIew.swift */,
 				A2A79FC623D36609001FAE92 /* ImageCollectionViewCell.swift */,
 			);
 			path = View;
@@ -596,6 +599,7 @@
 				A23C479D23D358B600F32697 /* FlickrAPI.swift in Sources */,
 				A23C479923D357B900F32697 /* BaseRepository.swift in Sources */,
 				A23C478F23D3544000F32697 /* APIRequestMethod.swift in Sources */,
+				A2A79FCD23D37875001FAE92 /* LoadingCollectionViewFooterVIew.swift in Sources */,
 				A2A79FD823D3A386001FAE92 /* UIView+DropShadow.swift in Sources */,
 				A23C477C23D3480400F32697 /* PhotosViewController.swift in Sources */,
 				A23C479523D356F800F32697 /* APITargetType.swift in Sources */,
