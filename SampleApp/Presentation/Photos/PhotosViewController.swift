@@ -113,6 +113,11 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UISear
         viewModel.onPhotosChanged = { [weak self] newPhotos in
             guard let `self` = self else { return }
         
+            // When triggering a new search viewModel.photos and newPhotos are empty, reload the collectionView
+            guard !self.viewModel.photos.isEmpty || !newPhotos.isEmpty else {
+                return self.collectionView.reloadData()
+            }
+            
             // Animate insertion of new items only
             let difference = self.viewModel.photos.count - newPhotos.count
             let range = (difference..<(difference + newPhotos.count))
