@@ -18,7 +18,7 @@ class ImageCacher {
     convenience init(url: URL) {
         self.init(url: url,
                   fetcher: NetworkFetcher(urlSession: .shared),
-                  storage: DiskStorage(fileManager: .default))
+                  storage: DiskStorage.shared)
     }
     
     init(url: URL, fetcher: Fetcher, storage: Storage) {
