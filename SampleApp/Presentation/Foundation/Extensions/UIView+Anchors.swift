@@ -38,5 +38,31 @@ extension UIView {
         
         return constraints
     }
+    
+    @discardableResult
+    func pinToSuperViewEdge(edge: Edge, offset: CGFloat = 0) -> NSLayoutConstraint? {
+        guard let superview = superview else { return nil }
+        return pinToViewEdge(view: superview, edge: edge, offset: offset)
+    }
+    
+    @discardableResult
+    func pinToViewEdge(view: UIView, edge: Edge, offset: CGFloat = 0) -> NSLayoutConstraint {
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint: NSLayoutConstraint
+        
+        switch edge {
+        case .top:
+            constraint = topAnchor.constraint(equalTo: view.topAnchor, constant: offset)
+        case .bottom:
+            constraint = bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -offset)
+        case .leading:
+            constraint = leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset)
+        case .trailing:
+            constraint = trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -offset)
+        }
+        
+        constraint.isActive = true
+        return constraint
+    }
 
 }

@@ -10,7 +10,7 @@ import Foundation
 
 class PhotosViewModel {
     
-    private let flickrRepository: FlickrRepository
+    internal let flickrRepository: FlickrRepository
     private(set) var paginatedItems: PaginatedItems<Photo>?
     private(set) var currentSearch = ""
     var photos = [Photo]()
